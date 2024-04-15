@@ -1,2 +1,3 @@
 *.geo.gz
 venv/
+__pycache__/
