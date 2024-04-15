@@ -1,11 +1,11 @@
 from time import sleep, time
 from os import path, environ
 from datetime import datetime
-import maxmind, upload
+import maxmind, upload, hasher
 
 api_key = environ.get("MAXMIND_KEY")
-ftp_user = environ.get("FTP_USER")
 ftp_host = environ.get("FTP_HOST")
+ftp_user = environ.get("FTP_USER")
 ftp_password = environ.get("FTP_PASSWORD")
 
 while True:
@@ -14,10 +14,10 @@ while True:
     do_update = True
 
     if do_update:
-        maxmind.run(api_key)
+       # maxmind.run(api_key)
+        hasher.hash()
         upload.upload(ftp_host, ftp_user, ftp_password)
     else:
         print("updating in %d s" % (time() - path.getmtime("ipv6.geo.gz")))
-
 
     sleep(3600)

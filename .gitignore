@@ -1,3 +1,4 @@
 *.geo.gz
+*.geo.gz.sha256
 venv/
 __pycache__/
